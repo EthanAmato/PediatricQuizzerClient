@@ -1,0 +1,6 @@
+:root {
+    --dark-color:#7d7c7c;
+    --light-color:#d6d6d6;
+    --primary-color:purple;
+    --gradient-background:url('../images/gradientbackground.jpg');
+}

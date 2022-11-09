@@ -1,0 +1,31 @@
+#form {
+    display: flex;
+    justify-content: center;
+    margin-top: 4em;
+}
+
+#form .userid{
+    border: none;
+    width: 250px;
+    padding: 15px;
+    border-radius: 3px;
+    font-size: 1.3em;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.start .btn {
+    padding: .4em 2em;
+    border: none;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.inner-container.main{
+    padding: 10%;
+    border-radius: 20px;
+}

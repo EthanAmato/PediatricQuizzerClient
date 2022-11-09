@@ -1,0 +1,71 @@
+@import 'constants.css';
+
+.inner-container.result{
+    padding: 10%;
+    width: 70%;
+    border-radius: 15px;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3%;
+    border: 3px solid;
+    border-image: var(--gradient-background) 1; 
+}
+.container .flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .flex span{
+    color: black;
+    font-size: 1.4em;
+}
+
+.container .flex span:not(:last-child){
+    line-height:2em;
+}
+
+
+.bold {
+    font-weight: 700;
+}
+
+.inner-container.table{
+    margin-top: 4%;
+    border: 3px solid;
+    border-image: var(--gradient-background) 1; 
+}
+
+table {
+    width: 100%;    
+}
+
+.table-header {
+    color: var(--light-color);
+    font-size: 1.1em;
+    text-align: center;
+    background-image: var(--gradient-background);
+    padding: 18px 0;
+}
+
+.table-body {
+    font-size: 1.6em;
+    text-align: center;
+    background: #d8d8d8;
+    padding: 18px 0;
+}
+
+
+.table-header > tr > td{
+    border: 3px solid black;   
+}
+
+
+@media screen and (max-width:375px) {
+    .inner-container.result{
+        width: 80%;
+    }
+}
