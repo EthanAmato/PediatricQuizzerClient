@@ -1,11 +1,37 @@
 import React from 'react';
 import '../styles/result.css'
+
 import { Link } from 'react-router-dom';
 import ResultTable from './ResultComponents/ResultTable';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+//import actions
+import { useEffect } from 'react';
+import { resetAllAction } from '../redux/question_reducer';
+import { resetResultAction } from '../redux/result_reducer';
+import {calculateEarnedPoints, calcNumOfAttemptedQuestions, flagResult} from '../helper/helper';
+
 export default function Result() {
+    const dispatch = useDispatch()
+    //Retrieve answers, queue, userId, and result from state variables
+    const {questions: {answers, queue}, result:{userId, result}} = useSelector(state => state)
+
+    useEffect(() => {
+        console.log(answers, queue, userId, result)
+        console.log(numOfattemptedQuestions)
+        console.log(earnedPoints);
+        console.log(flag)
+    }, [])
+    
+    const totalPoints = queue.length * 10; //total possible points given length of quiz
+    const numOfattemptedQuestions = calcNumOfAttemptedQuestions(result);
+    const earnedPoints = calculateEarnedPoints(result, answers, 10);
+    const flag = flagResult(totalPoints, earnedPoints);
+
     function onRestart() {
-        console.log("on restart")
+        dispatch(resetAllAction())
+        dispatch(resetResultAction())
     }
     return(
         <div className='container'>
@@ -13,24 +39,24 @@ export default function Result() {
                 <h1 className='title'>Results</h1>
                 <div className='result flex-center'>
                     <div className='flex'>
-                        <span>Total Quiz Points : </span>
-                        <span className='bold'>50</span>
+                        <span>Total Possible Points : </span>
+                        <span className='bold'>{totalPoints || 0}</span>
                     </div>
                     <div className='flex'>
                         <span>Total Questions : </span>
-                        <span className='bold'>5</span>
+                        <span className='bold'>{queue.length || 0}</span>
                     </div>
                     <div className='flex'>
-                        <span>Total Attempts : </span>
-                        <span className='bold'>03</span>
+                        <span>Total Attempted Questions : </span>
+                        <span className='bold'>{numOfattemptedQuestions || 0}</span>
                     </div>
                     <div className='flex'>
                         <span>Total Points Earned : </span>
-                        <span className='bold'>50</span>
+                        <span className='bold'>{earnedPoints  || 0}</span>
                     </div>
                     <div className='flex'>
                         <span>Quiz Results : </span>
-                        <span className='bold'>Passed</span>
+                        <span style={{color: `${flag ? "green" : "red"}`}}className='bold'>{flag ? "Passed" : "Failed"}</span>
                     </div>
                 </div>
 
