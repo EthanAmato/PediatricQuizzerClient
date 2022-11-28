@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { questionReducer } from "./question_reducer";
-
+ 
 export const resultReducer = createSlice({
     name: 'result',
     initialState: {

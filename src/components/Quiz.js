@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Questions from '../components/QuizComponents/Questions'
 import '../styles/quiz.css'
-import { Dispatch } from '@reduxjs/toolkit';
 /* Get initial state from reducers - redux store import */
 import { useSelector, useDispatch } from 'react-redux'
 import { moveNextQuestion, movePrevQuestion } from '../hooks/FetchQuestion';
@@ -18,8 +17,6 @@ export default function Quiz() {
 
     const dispatch = useDispatch()
 
-    useEffect(()=> {
-    })
     function onNext() {
         //update the trace value by one using redux reducer
         if(trace < queue.length) {

@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"; //only accessible inside of hooks
-import data, {answers} from "../database/data";
+import { getServerData } from "../helper/helper";
 
 // redux actions
 import * as Action from '../redux/question_reducer'
@@ -29,8 +29,8 @@ export const useFetchQuestion = () => {
         (async () => {
 
             try {
-                let questions = await data;
-
+                const [{questions, answers}] = await getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/questions`, (data) => data);
+                console.log({questions, answers});
                 if (questions.length > 0){
                     setGetData(prev =>({...prev, isLoading: false }));
                     setGetData(prev =>({...prev, apiData: questions}));
