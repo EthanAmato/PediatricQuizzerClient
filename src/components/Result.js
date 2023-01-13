@@ -25,7 +25,7 @@ export default function Result() {
     //Store user result
     usePublishResult({ 
         result, username: userId, 
-        numOfattemptedQuestions, 
+        attempts: numOfattemptedQuestions, 
         points: earnedPoints, 
         achieved: flag ? "Passed" : "Failed" 
     });
